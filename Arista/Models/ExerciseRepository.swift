@@ -30,10 +30,9 @@ struct ExerciseRepository {
         newExercise.intensity = Int64(intensity)
         newExercise.startDate = startDate
         
-        try viewContext.save()
-    }
-    
-    func addExercise() {
+        // user not optional in the data model
+        newExercise.user = try UserRepository(viewContext: viewContext).getUser()
         
+        try viewContext.save()
     }
 }
