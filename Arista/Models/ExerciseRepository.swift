@@ -20,14 +20,42 @@ struct ExerciseRepository {
         
         request.sortDescriptors = [NSSortDescriptor(SortDescriptor<Exercise>(\.startDate, order: .reverse))]
         
-        return try viewContext.fetch(request)
+        do {
+            let exercises = try viewContext.fetch(request)
+            if exercises.isEmpty {
+                throw AristaError.noData
+            }
+            return exercises
+        } catch {
+            throw AristaError.fetchFailed(reason: error.localizedDescription)
+        }        
+    }
+    
+    private func checkDurationValidity(duration: Int) -> Bool {
+        // duration must not exceed 3 days = 72 hours !
+        return duration >= 1 && duration <= 4320
+    }
+    
+    private func checkIntensityValidity(intensity: Int) -> Bool {
+        // 0 <= intensity <= 10
+        return intensity >= 0 && intensity <= 10
     }
     
     func addExercise(category: String, duration: Int, intensity: Int, startDate: Date) throws {
+        guard checkDurationValidity(duration: duration) else {
+            throw AristaError.invalidDuration
+        }
+        guard checkIntensityValidity(intensity: intensity) else {
+            throw AristaError.invalidIntensity
+        }
+        
         let newExercise = Exercise(context: viewContext)
         newExercise.category = category
+        
         newExercise.duration = Int64(duration)
         newExercise.intensity = Int64(intensity)
+        
+        
         newExercise.startDate = startDate
         
         // user not optional in the data model

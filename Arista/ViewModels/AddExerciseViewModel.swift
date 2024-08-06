@@ -9,7 +9,7 @@ import Foundation
 import CoreData
 
 class AddExerciseViewModel: ObservableObject {
-    @Published var category: String = ""
+    @Published var category: ExerciseCategory = .marche
     @Published var startTime: Date = Date()
     @Published var duration: Int = 0
     @Published var intensity: Int = 0
@@ -64,17 +64,12 @@ class AddExerciseViewModel: ObservableObject {
         }
     }
     
-    func addExercise() -> Bool {
-        do {
-            try ExerciseRepository(viewContext: viewContext).addExercise(
-                category: category,
-                duration: duration,
-                intensity: intensity,
-                startDate: startTime
-            )
-            return true
-        } catch {
-            return false
-        }
+    func addExercise() throws {
+        try ExerciseRepository(viewContext: viewContext).addExercise(
+            category: category.rawValue,
+            duration: duration,
+            intensity: intensity,
+            startDate: startTime
+        )
     }
 }

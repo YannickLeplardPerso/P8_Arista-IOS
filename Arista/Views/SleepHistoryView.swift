@@ -9,8 +9,15 @@ import SwiftUI
 
 struct SleepHistoryView: View {
     @ObservedObject var viewModel: SleepHistoryViewModel
-
-        var body: some View {
+    
+    var body: some View {
+        
+        if let error = viewModel.error {
+            Text(error.localizedDescription)
+                .foregroundColor(.red)
+                .padding()
+            
+        } else {
             List(viewModel.sleepSessions) { session in
                 HStack {
                     QualityIndicator(quality: session.quality)
@@ -23,6 +30,7 @@ struct SleepHistoryView: View {
             }
             .navigationTitle("Historique de Sommeil")
         }
+    }
 }
 
 struct QualityIndicator: View {

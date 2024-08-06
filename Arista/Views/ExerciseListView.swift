@@ -15,7 +15,9 @@ struct ExerciseListView: View {
         NavigationView {
             List(viewModel.exercises) { exercise in
                 HStack {
-                    Image(systemName: iconForCategory(exercise.category ?? "unknown"))
+                    if let category = ExerciseCategory(rawValue: exercise.category!) {
+                        Image(systemName: category.iconName)
+                    }
                     VStack(alignment: .leading) {
                         Text(exercise.category ?? "?")
                             .font(.headline)
@@ -46,23 +48,6 @@ struct ExerciseListView: View {
 //            viewModel.reload()
 //        }
         
-    }
-    
-    func iconForCategory(_ category: String) -> String {
-        switch category {
-        case "Football":
-            return "sportscourt"
-        case "Natation":
-            return "waveform.path.ecg"
-        case "Running":
-            return "figure.run"
-        case "Marche":
-            return "figure.walk"
-        case "Cyclisme":
-            return "bicycle"
-        default:
-            return "questionmark"
-        }
     }
 }
 

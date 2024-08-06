@@ -11,6 +11,7 @@ import CoreData
 class UserDataViewModel: ObservableObject {
     @Published var firstName: String = ""
     @Published var lastName: String = ""
+    @Published var error: AristaError?
 
     private var viewContext: NSManagedObjectContext
 
@@ -18,21 +19,23 @@ class UserDataViewModel: ObservableObject {
         self.viewContext = context
         fetchUserData()
     }
-
+    
     private func fetchUserData() {
         do {
             guard let user = try UserRepository().getUser() else {
-                fatalError()
+                throw AristaError.noData
             }
             firstName = user.firstName ?? ""
             lastName = user.lastName ?? ""
             
-            let storeURL = viewContext.persistentStoreCoordinator?.persistentStores.first?.url
-            print(storeURL ?? "No store URL found")
+            // temp for debug only : to obtain path for database (for deletion of datas with DB Browser for SQLite)
+                        let storeURL = viewContext.persistentStoreCoordinator?.persistentStores.first?.url
+                        print(storeURL ?? "No store URL found")
             
-            
+        } catch let error as AristaError {
+            self.error = error
         } catch {
-            
+            self.error = .fetchFailed(reason: error.localizedDescription)
         }
     }
 }

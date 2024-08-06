@@ -11,6 +11,7 @@ import CoreData
 
 class ExerciseListViewModel: ObservableObject {
     @Published var exercises = [Exercise]()
+    @Published var error: AristaError?
 
     var viewContext: NSManagedObjectContext
 
@@ -23,8 +24,10 @@ class ExerciseListViewModel: ObservableObject {
         do {
             let data = ExerciseRepository(viewContext: viewContext)
             exercises = try data.getExercise()
+        } catch let error as AristaError {
+            self.error = error
         } catch {
-            
+            self.error = .fetchFailed(reason: error.localizedDescription)
         }
     }
     

@@ -20,6 +20,15 @@ struct SleepRepository {
         
         request.sortDescriptors = [NSSortDescriptor(SortDescriptor<Sleep>(\.startDate, order: .reverse))]
         
-        return try viewContext.fetch(request)
+        do {
+            let sessions = try viewContext.fetch(request)
+            if sessions.isEmpty {
+                print("sessions.isEmpty Sleep")
+                throw AristaError.noData
+            }
+            return sessions
+        } catch {
+            throw AristaError.fetchFailed(reason: error.localizedDescription)
+        }
     }
 }

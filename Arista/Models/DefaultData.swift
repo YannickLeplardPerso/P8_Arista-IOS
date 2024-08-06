@@ -19,12 +19,16 @@ struct DefaultData {
         let userRepository = UserRepository(viewContext: viewContext)
         let sleepRepository = SleepRepository(viewContext: viewContext)
         
+        print("apply...")
+        // if no user or can't retrieve it, new user Yannick
         if (try? userRepository.getUser()) == nil {
             let initialUser = User(context: viewContext)
             initialUser.firstName = "Yannick"
             initialUser.lastName = "Leplard"
-            
-            if try sleepRepository.getSleepSessions().isEmpty {
+//            initialUser.firstName = "Charlotte"
+//            initialUser.lastName = "The Harlot"
+                           
+            if (try? sleepRepository.getSleepSessions()) == nil {
                 let sleep1 = Sleep(context: viewContext)
                 let sleep2 = Sleep(context: viewContext)
                 let sleep3 = Sleep(context: viewContext)
@@ -59,7 +63,7 @@ struct DefaultData {
                 sleep5.user = initialUser
             }
             
-            try? viewContext.save()
+            try viewContext.save()
         }
     }
 }

@@ -10,12 +10,21 @@ import SwiftUI
 struct AddExerciseView: View {
     @Environment(\.presentationMode) var presentationMode
     @ObservedObject var viewModel: AddExerciseViewModel
-
+    @State private var showAlert = false
+    @State private var alertMessage = ""
+    
     var body: some View {
         NavigationView {
             VStack {
                 Form {
-                    TextField("Catégorie", text: $viewModel.category)
+                    Picker("Catégorie", selection: $viewModel.category) {
+                        ForEach(ExerciseCategory.allCases, id: \.self) { category in
+                            Text(category.rawValue).tag(category)
+                        }
+                    }
+                    .pickerStyle(.wheel)
+                    
+                    //TextField("Catégorie", text: $viewModel.category)
                     TextField("Heure de démarrage", text: Binding(
                         get: { viewModel.getStartTimeString()},
                         set: { viewModel.setStartTime(from: $0)}
@@ -30,15 +39,31 @@ struct AddExerciseView: View {
                     ))
                 }.formStyle(.grouped)
                 Spacer()
-                Button("Ajouter l'exercice") {
-                    if viewModel.addExercise() {
-                        presentationMode.wrappedValue.dismiss()
-                    }
-                }.buttonStyle(.borderedProminent)
+                HStack {
+                    Button("Ajouter l'exercice") {
+                        // TODO : tester addExercise et afficher erreur
+                        do {
+                            try viewModel.addExercise()
+                            presentationMode.wrappedValue.dismiss()
+                        }
+                        catch let error as AristaError {
+                            alertMessage = error.localizedDescription
+                            showAlert = true
+                        } catch {
+                            alertMessage = "Unexpected error: \(error.localizedDescription)"
+                            showAlert = true
+                        }
+                    }.buttonStyle(.borderedProminent)
                     
+                    Button("Annuler") {
+                        presentationMode.wrappedValue.dismiss()
+                    }.buttonStyle(.borderedProminent)
+                }
             }
             .navigationTitle("Nouvel Exercice ...")
-            
+            .alert(isPresented: $showAlert) {
+                Alert(title: Text("Erreur"), message: Text(alertMessage), dismissButton: .default(Text("OK")))
+            }
         }
     }
 }
