@@ -14,23 +14,37 @@ class ExerciseListViewModel: ObservableObject {
     @Published var exercises = [Exercise]()
     @Published var error: AristaError?
 
+    private var repository: ExerciseRepository
     var viewContext: NSManagedObjectContext
 
-    init(context: NSManagedObjectContext) {
+    init(context: NSManagedObjectContext, repository: ExerciseRepository? = nil) {
         self.viewContext = context
+        self.repository = repository ?? ExerciseRepository(viewContext: viewContext)
         fetchExercises()
     }
 
-    private func fetchExercises() {
+    
+    // private
+    func fetchExercises() {
         do {
-            let data = ExerciseRepository(viewContext: viewContext)
-            exercises = try data.getExercise()
+            exercises = try repository.getExercise()
         } catch let error as AristaError {
             self.error = error
         } catch {
             self.error = .fetchFailed(reason: error.localizedDescription)
         }
     }
+    
+//    func fetchExercises() {
+//        do {
+//            let data = ExerciseRepository(viewContext: viewContext)
+//            exercises = try data.getExercise()
+//        } catch let error as AristaError {
+//            self.error = error
+//        } catch {
+//            self.error = .fetchFailed(reason: error.localizedDescription)
+//        }
+//    }
     
     // to update exercises when dismiss the addExerciceView
     func reload() {

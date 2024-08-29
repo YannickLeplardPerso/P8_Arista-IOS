@@ -209,8 +209,4 @@ final class ExerciseRepositoryTests: XCTestCase {
         XCTAssert(exercises[1].category == "Fitness")
         XCTAssert(exercises[2].category == "Running")
     }
-    
-    // 
-    
-    
 }

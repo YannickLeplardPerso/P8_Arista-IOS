@@ -12,6 +12,7 @@ import Foundation
 enum AristaError: Error, LocalizedError {
     case noData
     case fetchFailed(reason: String)
+//    case invalidCategory
     case invalidDuration
     case invalidIntensity
     
@@ -26,6 +27,8 @@ enum AristaError: Error, LocalizedError {
             return "No data available"
         case .fetchFailed(let reason):
             return "Failed to fetch data: \(reason)"
+//        case .invalidCategory:
+//            return "This category is not supported (or doesn't exist)."
         case .invalidDuration:
             return "The duration must be between 1 and 4320 minutes (3 days)."
         case .invalidIntensity:

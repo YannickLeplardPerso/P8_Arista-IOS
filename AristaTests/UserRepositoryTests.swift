@@ -54,3 +54,15 @@ final class UserRepositoryTests: XCTestCase {
         XCTAssertEqual(user?.lastName, "Doe")
     }
 }
+
+
+class MockUserRepository: UserRepository {
+    var shouldThrowError = false
+    
+    override func getUser() throws -> User? {
+        if shouldThrowError {
+            throw AristaError.fetchFailed(reason: "Simulated error")
+        }
+        return try super.getUser()
+    }
+}

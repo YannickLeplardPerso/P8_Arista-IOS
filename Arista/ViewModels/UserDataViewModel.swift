@@ -14,24 +14,26 @@ class UserDataViewModel: ObservableObject {
     @Published var error: AristaError?
 
     private var viewContext: NSManagedObjectContext
+    private var userRepository: UserRepository
 
-    init(context: NSManagedObjectContext) {
+    init(context: NSManagedObjectContext, repository: UserRepository = UserRepository()) {
         self.viewContext = context
+        self.userRepository = repository
         fetchUserData()
     }
     
     private func fetchUserData() {
         do {
-            guard let user = try UserRepository().getUser() else {
+            guard let user = try userRepository.getUser() else {
                 throw AristaError.noData
             }
             firstName = user.firstName ?? ""
             lastName = user.lastName ?? ""
             
-            // temp for debug only : to obtain path for database (for deletion of datas with DB Browser for SQLite)
+            // to obtain path for database (for deletion of datas with DB Browser for SQLite)
             #if DEBUG
-//            let storeURL = viewContext.persistentStoreCoordinator?.persistentStores.first?.url
-//            print(storeURL ?? "No store URL found")
+            let storeURL = viewContext.persistentStoreCoordinator?.persistentStores.first?.url
+            print(storeURL ?? "No store URL found")
             #endif
             
         } catch let error as AristaError {

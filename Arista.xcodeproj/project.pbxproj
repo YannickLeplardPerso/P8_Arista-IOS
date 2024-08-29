@@ -25,10 +25,10 @@
 		AC0638DF2C628004007577DA /* UserRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0638DE2C628004007577DA /* UserRepositoryTests.swift */; };
 		AC1A95592C5FF7040002AB11 /* ExerciseList.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1A95582C5FF7040002AB11 /* ExerciseList.swift */; };
 		AC44A2EA2C6103E700397C9B /* AristaError.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC44A2E92C6103E700397C9B /* AristaError.swift */; };
-		AC4AAB012C7328D30084FD6B /* ExerciseListVIewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4AAB002C7328D30084FD6B /* ExerciseListVIewModelTests.swift */; };
-		AC4AAB032C732A5A0084FD6B /* SleepHistoryVIewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4AAB022C732A5A0084FD6B /* SleepHistoryVIewModelTests.swift */; };
-		AC4AAB052C732A770084FD6B /* AddExerciseVIewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4AAB042C732A770084FD6B /* AddExerciseVIewModelTests.swift */; };
-		AC4AAB072C732AB10084FD6B /* UserDataVIewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4AAB062C732AB10084FD6B /* UserDataVIewModelTests.swift */; };
+		AC4AAB012C7328D30084FD6B /* ExerciseListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4AAB002C7328D30084FD6B /* ExerciseListViewModelTests.swift */; };
+		AC4AAB032C732A5A0084FD6B /* SleepHistoryViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4AAB022C732A5A0084FD6B /* SleepHistoryViewModelTests.swift */; };
+		AC4AAB052C732A770084FD6B /* AddExerciseViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4AAB042C732A770084FD6B /* AddExerciseViewModelTests.swift */; };
+		AC4AAB072C732AB10084FD6B /* UserDataViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4AAB062C732AB10084FD6B /* UserDataViewModelTests.swift */; };
 		AC8FA5342C51310400774E74 /* SleepRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8FA5332C51310400774E74 /* SleepRepository.swift */; };
 		AC8FA5362C5143DA00774E74 /* ExerciseRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8FA5352C5143DA00774E74 /* ExerciseRepository.swift */; };
 		ACC27EE22C5A325400D82E64 /* DefaultData.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC27EE12C5A325400D82E64 /* DefaultData.swift */; };
@@ -66,10 +66,10 @@
 		AC0638DE2C628004007577DA /* UserRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepositoryTests.swift; sourceTree = "<group>"; };
 		AC1A95582C5FF7040002AB11 /* ExerciseList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseList.swift; sourceTree = "<group>"; };
 		AC44A2E92C6103E700397C9B /* AristaError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AristaError.swift; sourceTree = "<group>"; };
-		AC4AAB002C7328D30084FD6B /* ExerciseListVIewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseListVIewModelTests.swift; sourceTree = "<group>"; };
-		AC4AAB022C732A5A0084FD6B /* SleepHistoryVIewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepHistoryVIewModelTests.swift; sourceTree = "<group>"; };
-		AC4AAB042C732A770084FD6B /* AddExerciseVIewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExerciseVIewModelTests.swift; sourceTree = "<group>"; };
-		AC4AAB062C732AB10084FD6B /* UserDataVIewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataVIewModelTests.swift; sourceTree = "<group>"; };
+		AC4AAB002C7328D30084FD6B /* ExerciseListViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseListViewModelTests.swift; sourceTree = "<group>"; };
+		AC4AAB022C732A5A0084FD6B /* SleepHistoryViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepHistoryViewModelTests.swift; sourceTree = "<group>"; };
+		AC4AAB042C732A770084FD6B /* AddExerciseViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExerciseViewModelTests.swift; sourceTree = "<group>"; };
+		AC4AAB062C732AB10084FD6B /* UserDataViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataViewModelTests.swift; sourceTree = "<group>"; };
 		AC8FA5332C51310400774E74 /* SleepRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepRepository.swift; sourceTree = "<group>"; };
 		AC8FA5352C5143DA00774E74 /* ExerciseRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseRepository.swift; sourceTree = "<group>"; };
 		ACC27EE12C5A325400D82E64 /* DefaultData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultData.swift; sourceTree = "<group>"; };
@@ -140,10 +140,10 @@
 				AC0638D82C624981007577DA /* ExerciseRepositoryTests.swift */,
 				AC0638DA2C626BAC007577DA /* SleepRepositoryTests.swift */,
 				AC0638DE2C628004007577DA /* UserRepositoryTests.swift */,
-				AC4AAB002C7328D30084FD6B /* ExerciseListVIewModelTests.swift */,
-				AC4AAB022C732A5A0084FD6B /* SleepHistoryVIewModelTests.swift */,
-				AC4AAB042C732A770084FD6B /* AddExerciseVIewModelTests.swift */,
-				AC4AAB062C732AB10084FD6B /* UserDataVIewModelTests.swift */,
+				AC4AAB002C7328D30084FD6B /* ExerciseListViewModelTests.swift */,
+				AC4AAB022C732A5A0084FD6B /* SleepHistoryViewModelTests.swift */,
+				AC4AAB042C732A770084FD6B /* AddExerciseViewModelTests.swift */,
+				AC4AAB062C732AB10084FD6B /* UserDataViewModelTests.swift */,
 			);
 			path = AristaTests;
 			sourceTree = "<group>";
@@ -310,10 +310,10 @@
 			files = (
 				AC0638D92C624981007577DA /* ExerciseRepositoryTests.swift in Sources */,
 				AC0638DF2C628004007577DA /* UserRepositoryTests.swift in Sources */,
-				AC4AAB052C732A770084FD6B /* AddExerciseVIewModelTests.swift in Sources */,
-				AC4AAB072C732AB10084FD6B /* UserDataVIewModelTests.swift in Sources */,
-				AC4AAB012C7328D30084FD6B /* ExerciseListVIewModelTests.swift in Sources */,
-				AC4AAB032C732A5A0084FD6B /* SleepHistoryVIewModelTests.swift in Sources */,
+				AC4AAB052C732A770084FD6B /* AddExerciseViewModelTests.swift in Sources */,
+				AC4AAB072C732AB10084FD6B /* UserDataViewModelTests.swift in Sources */,
+				AC4AAB012C7328D30084FD6B /* ExerciseListViewModelTests.swift in Sources */,
+				AC4AAB032C732A5A0084FD6B /* SleepHistoryViewModelTests.swift in Sources */,
 				AC0638DB2C626BAC007577DA /* SleepRepositoryTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
