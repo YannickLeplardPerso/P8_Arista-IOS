@@ -9,7 +9,7 @@ import Foundation
 
 
 
-enum AristaError: Error, LocalizedError {
+enum AristaError: Error, LocalizedError, Equatable {
     case noData
     case fetchFailed(reason: String)
 //    case invalidCategory

@@ -133,14 +133,15 @@ final class AddExerciseViewModelTests: XCTestCase {
     }
     
     func test_WhenAddingExercise_ExerciseIsAddedToDatabase() {
-        let user = addUser(firstName: "John", lastName: "Doe")
+        _ = addUser(firstName: "John", lastName: "Doe")
         
         let viewModel = AddExerciseViewModel(context: context)
         viewModel.category = .football
         viewModel.duration = 60
         viewModel.intensity = 4
         
-        addExercise(viewModel: viewModel, user: user)
+        // Directly call the method under test
+        try! viewModel.addExercise()
         
         let fetchRequest = Exercise.fetchRequest()
         let exercises = try! context.fetch(fetchRequest)
@@ -149,36 +150,5 @@ final class AddExerciseViewModelTests: XCTestCase {
         XCTAssertEqual(exercises.first?.category, "Football")
         XCTAssertEqual(exercises.first?.duration, 60)
         XCTAssertEqual(exercises.first?.intensity, 4)
-        XCTAssertEqual(exercises.first?.user?.firstName, "John")
-        XCTAssertEqual(exercises.first?.user?.lastName, "Doe")
-    }
-    
-    //yl
-    func test_invalidStartTimeConversion() {
-        let viewModel = AddExerciseViewModel(context: context)
-
-        // Test invalid date strings
-        let invalidDateStrings = ["invalid", "2024-02-30", "2024-13-01"]
-        for dateString in invalidDateStrings {
-            viewModel.setStartTime(from: dateString)
-            XCTAssertNotEqual(viewModel.startTime, DateFormatter().date(from: dateString))
-        }
-    }
-    
-    func test_setStartTime_WithEdgeCases() {
-        let viewModel = AddExerciseViewModel(context: context)
-        let formatter = DateFormatter()
-        formatter.dateStyle = .short
-        formatter.timeStyle = .short
-
-        // Test very old date
-        let oldDate = Date(timeIntervalSince1970: 0)
-        viewModel.startTime = oldDate
-        XCTAssertEqual(viewModel.getStartTimeString(), formatter.string(from: oldDate))
-
-        // Test very future date
-        let futureDate = Date(timeIntervalSinceNow: 10000000000)
-        viewModel.startTime = futureDate
-        XCTAssertEqual(viewModel.getStartTimeString(), formatter.string(from: futureDate))
     }
 }

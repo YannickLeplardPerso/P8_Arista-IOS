@@ -8,7 +8,7 @@
 import Foundation
 import CoreData
 
-struct SleepRepository {
+class SleepRepository {
     let viewContext: NSManagedObjectContext
     
     init(viewContext: NSManagedObjectContext = PersistenceController.shared.container.viewContext) {

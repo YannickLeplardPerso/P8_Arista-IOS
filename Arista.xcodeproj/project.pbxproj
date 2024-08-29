@@ -23,6 +23,8 @@
 		AC0638D92C624981007577DA /* ExerciseRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0638D82C624981007577DA /* ExerciseRepositoryTests.swift */; };
 		AC0638DB2C626BAC007577DA /* SleepRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0638DA2C626BAC007577DA /* SleepRepositoryTests.swift */; };
 		AC0638DF2C628004007577DA /* UserRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0638DE2C628004007577DA /* UserRepositoryTests.swift */; };
+		AC0A14BF2C80B9980016060A /* MockUserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0A14BE2C80B9980016060A /* MockUserRepository.swift */; };
+		AC0A14C12C80C3DE0016060A /* MockSleepRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0A14C02C80C3DE0016060A /* MockSleepRepository.swift */; };
 		AC1A95592C5FF7040002AB11 /* ExerciseList.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1A95582C5FF7040002AB11 /* ExerciseList.swift */; };
 		AC44A2EA2C6103E700397C9B /* AristaError.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC44A2E92C6103E700397C9B /* AristaError.swift */; };
 		AC4AAB012C7328D30084FD6B /* ExerciseListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4AAB002C7328D30084FD6B /* ExerciseListViewModelTests.swift */; };
@@ -64,6 +66,8 @@
 		AC0638D82C624981007577DA /* ExerciseRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseRepositoryTests.swift; sourceTree = "<group>"; };
 		AC0638DA2C626BAC007577DA /* SleepRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepRepositoryTests.swift; sourceTree = "<group>"; };
 		AC0638DE2C628004007577DA /* UserRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepositoryTests.swift; sourceTree = "<group>"; };
+		AC0A14BE2C80B9980016060A /* MockUserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockUserRepository.swift; sourceTree = "<group>"; };
+		AC0A14C02C80C3DE0016060A /* MockSleepRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockSleepRepository.swift; sourceTree = "<group>"; };
 		AC1A95582C5FF7040002AB11 /* ExerciseList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseList.swift; sourceTree = "<group>"; };
 		AC44A2E92C6103E700397C9B /* AristaError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AristaError.swift; sourceTree = "<group>"; };
 		AC4AAB002C7328D30084FD6B /* ExerciseListViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseListViewModelTests.swift; sourceTree = "<group>"; };
@@ -137,6 +141,7 @@
 		53E587452B235E9000E4EF99 /* AristaTests */ = {
 			isa = PBXGroup;
 			children = (
+				AC0A14C22C80C3E70016060A /* Mocks */,
 				AC0638D82C624981007577DA /* ExerciseRepositoryTests.swift */,
 				AC0638DA2C626BAC007577DA /* SleepRepositoryTests.swift */,
 				AC0638DE2C628004007577DA /* UserRepositoryTests.swift */,
@@ -182,6 +187,15 @@
 				53E587702B23714800E4EF99 /* SleepHistoryViewModel.swift */,
 			);
 			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		AC0A14C22C80C3E70016060A /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				AC0A14C02C80C3DE0016060A /* MockSleepRepository.swift */,
+				AC0A14BE2C80B9980016060A /* MockUserRepository.swift */,
+			);
+			path = Mocks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -312,7 +326,9 @@
 				AC0638DF2C628004007577DA /* UserRepositoryTests.swift in Sources */,
 				AC4AAB052C732A770084FD6B /* AddExerciseViewModelTests.swift in Sources */,
 				AC4AAB072C732AB10084FD6B /* UserDataViewModelTests.swift in Sources */,
+				AC0A14BF2C80B9980016060A /* MockUserRepository.swift in Sources */,
 				AC4AAB012C7328D30084FD6B /* ExerciseListViewModelTests.swift in Sources */,
+				AC0A14C12C80C3DE0016060A /* MockSleepRepository.swift in Sources */,
 				AC4AAB032C732A5A0084FD6B /* SleepHistoryViewModelTests.swift in Sources */,
 				AC0638DB2C626BAC007577DA /* SleepRepositoryTests.swift in Sources */,
 			);

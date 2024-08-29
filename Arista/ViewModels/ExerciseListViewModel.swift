@@ -35,17 +35,6 @@ class ExerciseListViewModel: ObservableObject {
         }
     }
     
-//    func fetchExercises() {
-//        do {
-//            let data = ExerciseRepository(viewContext: viewContext)
-//            exercises = try data.getExercise()
-//        } catch let error as AristaError {
-//            self.error = error
-//        } catch {
-//            self.error = .fetchFailed(reason: error.localizedDescription)
-//        }
-//    }
-    
     // to update exercises when dismiss the addExerciceView
     func reload() {
         fetchExercises()

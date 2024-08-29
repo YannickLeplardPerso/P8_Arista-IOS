@@ -11,13 +11,13 @@ import CoreData
 
 
 class MockUserRepository: UserRepository {
-    var shouldReturnUser: User?
-    var shouldThrowError: AristaError?
+    private var userRepository: User?
+    
+    init(user: User?) {
+        userRepository = user
+    }
 
     override func getUser() throws -> User? {
-        if let error = shouldThrowError {
-            throw error
-        }
-        return shouldReturnUser
+        return userRepository
     }
 }

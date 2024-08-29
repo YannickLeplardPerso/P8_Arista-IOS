@@ -19,7 +19,6 @@ struct DefaultData {
         let userRepository = UserRepository(viewContext: viewContext)
         let sleepRepository = SleepRepository(viewContext: viewContext)
         
-        print("apply...")
         // if no user or can't retrieve it, new user Yannick
         if (try? userRepository.getUser()) == nil {
             let initialUser = User(context: viewContext)

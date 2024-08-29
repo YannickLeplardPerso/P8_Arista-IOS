@@ -13,16 +13,17 @@ class SleepHistoryViewModel: ObservableObject {
     @Published var error: AristaError?
     
     private var viewContext: NSManagedObjectContext
+    private var repository: SleepRepository
     
-    init(context: NSManagedObjectContext) {
+    init(context: NSManagedObjectContext, repository: SleepRepository? = nil) {
         self.viewContext = context
+        self.repository = repository ?? SleepRepository(viewContext: context)
         fetchSleepSessions()
     }
     
     private func fetchSleepSessions() {
         do {
-            let data = SleepRepository(viewContext: viewContext)
-            sleepSessions = try data.getSleepSessions()
+            sleepSessions = try repository.getSleepSessions()
         } catch let error as AristaError {
             self.error = error
         } catch {

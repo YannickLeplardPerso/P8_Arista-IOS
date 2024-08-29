@@ -31,10 +31,6 @@ class ExerciseRepository {
         }
     }
     
-//    private func checkCategory(category: String) -> Bool {
-//        return ExerciseCategory(rawValue: category) != nil
-//    }
-    
     private func checkDurationValidity(duration: Int) -> Bool {
         // duration must not exceed 3 days = 72 hours !
         return duration >= 1 && duration <= 4320
@@ -46,9 +42,6 @@ class ExerciseRepository {
     }
     
     func addExercise(category: String, duration: Int, intensity: Int, startDate: Date) throws {
-//        guard checkCategory(category: String) else {
-//            throw AristaError.invalidCategory
-//        }
         guard checkDurationValidity(duration: duration) else {
             throw AristaError.invalidDuration
         }
