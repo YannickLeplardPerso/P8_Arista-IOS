@@ -27,6 +27,14 @@ struct SleepHistoryView: View {
                         Text("Durée : \(session.duration/60) heures")
                     }
                 }
+                .padding()
+                .background(
+                    LinearGradient(gradient: Gradient(colors: [.blue, .white]),
+                                   startPoint: .trailing,
+                                   endPoint: .leading)
+                )
+                .cornerRadius(10) // Make the corners rounded
+                .shadow(color: .gray.opacity(0.5), radius: 5, x: 0, y: 2)
             }
             .navigationTitle("Historique de Sommeil")
         }

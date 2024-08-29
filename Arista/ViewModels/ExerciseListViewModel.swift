@@ -6,8 +6,9 @@
 //
 
 import Foundation
-
 import CoreData
+
+
 
 class ExerciseListViewModel: ObservableObject {
     @Published var exercises = [Exercise]()

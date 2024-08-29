@@ -42,7 +42,11 @@ struct PersistenceController {
         container.viewContext.automaticallyMergesChangesFromParent = true
          
         do {
-            try DefaultData(viewContext: container.viewContext).apply()
+            // for tests
+            if inMemory == false {
+                try DefaultData(viewContext: container.viewContext).apply()
+            }
+            
         } catch {
             print("Failed to apply default data: \(error.localizedDescription)")
         }

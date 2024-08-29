@@ -8,6 +8,8 @@
 import Foundation
 import CoreData
 
+
+
 struct ExerciseRepository {
     let viewContext: NSManagedObjectContext
     
@@ -22,13 +24,10 @@ struct ExerciseRepository {
         
         do {
             let exercises = try viewContext.fetch(request)
-            if exercises.isEmpty {
-                throw AristaError.noData
-            }
             return exercises
         } catch {
             throw AristaError.fetchFailed(reason: error.localizedDescription)
-        }        
+        }
     }
     
     private func checkDurationValidity(duration: Int) -> Bool {

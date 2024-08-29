@@ -19,29 +19,40 @@ struct AddExerciseView: View {
                 Form {
                     Picker("Catégorie", selection: $viewModel.category) {
                         ForEach(ExerciseCategory.allCases, id: \.self) { category in
-                            Text(category.rawValue).tag(category)
+                            Text(category.rawValue)
+                                .foregroundColor(.blue)
+                                .tag(category)
                         }
                     }
                     .pickerStyle(.wheel)
                     
-                    //TextField("Catégorie", text: $viewModel.category)
                     TextField("Heure de démarrage", text: Binding(
                         get: { viewModel.getStartTimeString()},
                         set: { viewModel.setStartTime(from: $0)}
                     ))
-                    TextField("Durée (en minutes)", text: Binding(
-                        get: { viewModel.durationString },
-                        set: { viewModel.durationString = $0 }
-                    ))
-                    TextField("Intensité (0 à 10)", text: Binding(
-                        get: { viewModel.intensityString },
-                        set: { viewModel.intensityString = $0 }
-                    ))
+                    .foregroundColor(.blue)
+                    
+                    VStack(alignment: .leading) {
+                        Text("Durée (en minutes)")
+                        Stepper(value: $viewModel.duration, in: 0...4320, step: 1) {
+                            Text("\(viewModel.duration)")
+                                .foregroundColor(.blue)
+                        }
+                    }
+                    
+                    VStack(alignment: .leading) {
+                        Text("Intensité (1 à 10)")
+                        Slider(value: Binding(
+                            get: { Double(viewModel.intensity) },
+                            set: { viewModel.intensity = Int($0) }
+                        ), in: 1...10, step: 1)
+                        Text("\(viewModel.intensity)") // Display the current value
+                            .foregroundColor(.blue)
+                    }
                 }.formStyle(.grouped)
                 Spacer()
                 HStack {
                     Button("Ajouter l'exercice") {
-                        // TODO : tester addExercise et afficher erreur
                         do {
                             try viewModel.addExercise()
                             presentationMode.wrappedValue.dismiss()
@@ -64,9 +75,12 @@ struct AddExerciseView: View {
             .alert(isPresented: $showAlert) {
                 Alert(title: Text("Erreur"), message: Text(alertMessage), dismissButton: .default(Text("OK")))
             }
+            
         }
     }
 }
+
+
 
 #Preview {
     AddExerciseView(viewModel: AddExerciseViewModel(context: PersistenceController.preview.container.viewContext))

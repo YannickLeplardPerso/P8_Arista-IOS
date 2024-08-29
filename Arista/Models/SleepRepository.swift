@@ -22,10 +22,6 @@ struct SleepRepository {
         
         do {
             let sessions = try viewContext.fetch(request)
-            if sessions.isEmpty {
-                print("sessions.isEmpty Sleep")
-                throw AristaError.noData
-            }
             return sessions
         } catch {
             throw AristaError.fetchFailed(reason: error.localizedDescription)

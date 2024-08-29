@@ -15,7 +15,7 @@ struct ExerciseListView: View {
         NavigationView {
             List(viewModel.exercises) { exercise in
                 HStack {
-                    if let category = ExerciseCategory(rawValue: exercise.category!) {
+                    if let category = ExerciseCategory(rawValue: exercise.category ?? "") {
                         Image(systemName: category.iconName)
                     }
                     VStack(alignment: .leading) {
@@ -30,6 +30,14 @@ struct ExerciseListView: View {
                     Spacer()
                     IntensityIndicator(intensity: exercise.intensity)
                 }
+                .padding()
+                .background(
+                    LinearGradient(gradient: Gradient(colors: [.blue, .white]),
+                                   startPoint: .leading,
+                                   endPoint: .trailing)
+                )
+                .cornerRadius(10) // Make the corners rounded
+                .shadow(color: .gray.opacity(0.5), radius: 5, x: 0, y: 2)
             }
             .navigationTitle("Exercices")
             .navigationBarItems(trailing: Button(action: {
@@ -44,10 +52,6 @@ struct ExerciseListView: View {
                     viewModel.reload()
                 }
         }
-//        .onAppear() {
-//            viewModel.reload()
-//        }
-        
     }
 }
 
@@ -74,6 +78,6 @@ struct IntensityIndicator: View {
     }
 }
 
-#Preview {
-    ExerciseListView(viewModel: ExerciseListViewModel(context: PersistenceController.preview.container.viewContext))
-}
+//#Preview {
+//    ExerciseListView(viewModel: ExerciseListViewModel(context: PersistenceController.preview.container.viewContext))
+//}

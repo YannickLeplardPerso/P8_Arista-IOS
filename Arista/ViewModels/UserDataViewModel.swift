@@ -29,8 +29,10 @@ class UserDataViewModel: ObservableObject {
             lastName = user.lastName ?? ""
             
             // temp for debug only : to obtain path for database (for deletion of datas with DB Browser for SQLite)
-                        let storeURL = viewContext.persistentStoreCoordinator?.persistentStores.first?.url
-                        print(storeURL ?? "No store URL found")
+            #if DEBUG
+//            let storeURL = viewContext.persistentStoreCoordinator?.persistentStores.first?.url
+//            print(storeURL ?? "No store URL found")
+            #endif
             
         } catch let error as AristaError {
             self.error = error
